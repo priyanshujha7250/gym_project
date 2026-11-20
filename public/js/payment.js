@@ -51,7 +51,7 @@ const PaymentHandler = {
         key: order.key_id,
         amount: order.amount, // in paise
         currency: order.currency,
-        name: "IronCore Fitness",
+        name: "FIT NATION",
         description: `${order.plan_summary.name} Membership`,
         order_id: order.order_id,
         prefill: {

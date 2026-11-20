@@ -1,5 +1,5 @@
 /**
- * IronCore Fitness Website Frontend Scripts
+ * FIT NATION Website Frontend Scripts
  * Handles dynamic content fetching, filters, pricing toggles, modals, and forms.
  */
 

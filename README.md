@@ -1,4 +1,4 @@
-# IronCore Fitness & Digital Management Platform
+# FIT NATION & Digital Management Platform
 
 A modern, mobile-friendly gym website and comprehensive management portal designed to help gym owners attract new members, explain facilities and transparent membership options, build trust through certified trainer guidance, and simplify member registrations, renewals, and payment tracking.
 

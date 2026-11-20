@@ -1,5 +1,5 @@
 /**
- * IronCore Management Portal JavaScript
+ * FIT NATION Management Portal JavaScript
  * Handles authentication, data tables, modals, cash recording, and renewals.
  */
 

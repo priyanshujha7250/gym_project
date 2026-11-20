@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Startup script for IronCore Gym Platform
+# Startup script for FIT NATION Gym Platform
 
 set -e
 
@@ -7,7 +7,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd "$DIR"
 
 echo "=========================================================="
-echo "   IRONCORE FITNESS & DIGITAL MANAGEMENT PLATFORM"
+echo "   FIT NATION FITNESS & DIGITAL MANAGEMENT PLATFORM"
 echo "=========================================================="
 
 # Check Python 3
@@ -30,7 +30,7 @@ fi
 
 PORT="${PORT:-8000}"
 
-echo ">> Starting IronCore server on http://localhost:$PORT ..."
+echo ">> Starting FIT NATION server on http://localhost:$PORT ..."
 echo ">> Public Website: http://localhost:$PORT/"
 echo ">> Admin Portal:   http://localhost:$PORT/admin"
 echo "   [Default Login: admin@gym.com / admin123]"
