@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal | IronCore Fitness Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+  <!-- ================= 1. ADMIN LOGIN VIEW ================= -->
+  <div id="loginView" class="auth-wrapper">
+    <div class="auth-card">
+      <div class="auth-header">
+        <span class="auth-icon">⚡</span>
+        <h2>IronCore Staff Portal</h2>
+        <p>Sign in to manage members, cash collections, enquiries, and equipment.</p>
+      </div>
+
+      <form id="adminLoginForm">
+        <div class="form-group">
+          <label for="adminEmail">Staff Email</label>
+          <input type="email" id="adminEmail" class="form-input" required placeholder="admin@gym.com" value="admin@gym.com">
+        </div>
+
+        <div class="form-group">
+          <label for="adminPassword">Password</label>
+          <input type="password" id="adminPassword" class="form-input" required placeholder="••••••••" value="admin123">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="loginBtn">Sign In to Dashboard</button>
+        <div id="loginError" class="auth-error"></div>
+
+        <div class="demo-creds-box">
+          <strong>Default Staff Logins:</strong>
+          <div>• Manager: <code>admin@gym.com</code> / <code>admin123</code></div>
+          <div>• Front Desk: <code>staff@gym.com</code> / <code>staff123</code></div>
+        </div>
+
+        <div style="text-align: center; margin-top: 16px;">
+          <a href="/" class="back-link">← Back to Public Website</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= 2. AUTHENTICATED DASHBOARD VIEW ================= -->
+  <div id="dashboardView" class="dashboard-layout" style="display: none;">
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="brand">
+          <span class="brand-icon">⚡</span>
+          <div>
+            <strong>IRONCORE</strong>
+            <span>MANAGEMENT</span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-tab="overview">
+          <span class="icon">📊</span> Overview & KPI
+        </button>
+        <button class="nav-item" data-tab="enquiries">
+          <span class="icon">📩</span> Enquiries <span class="badge" id="enquiryBadge">0</span>
+        </button>
+        <button class="nav-item" data-tab="members">
+          <span class="icon">👥</span> Members Directory
+        </button>
+        <button class="nav-item" data-tab="payments">
+          <span class="icon">💰</span> Payments & Cash
+        </button>
+        <button class="nav-item" data-tab="plans">
+          <span class="icon">🏷️</span> Plans & Pricing
+        </button>
+        <button class="nav-item" data-tab="equipment">
+          <span class="icon">🏋️</span> Equipment & Tutorials
+        </button>
+        <button class="nav-item" data-tab="diet">
+          <span class="icon">🥗</span> Diet Consultations
+        </button>
+        <button class="nav-item" data-tab="audit">
+          <span class="icon">🛡️</span> Audit Trail
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <span class="user-avatar" id="userAvatar">A</span>
+          <div>
+            <strong id="userName">Gym Manager</strong>
+            <span class="role-badge" id="userRole">Admin</span>
+          </div>
+        </div>
+        <div class="footer-btns">
+          <a href="/" target="_blank" class="btn btn-sm btn-outline">View Site</a>
+          <button class="btn btn-sm btn-danger" id="logoutBtn">Logout</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <h1 id="pageTitle">Dashboard Overview</h1>
+          <span id="pageSub">System statistics, revenue metrics and floor status.</span>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-primary btn-sm" id="quickRecordCashBtn">💵 Record Cash Payment</button>
+          <button class="btn btn-secondary btn-sm" id="refreshStatsBtn">🔄 Refresh</button>
+        </div>
+      </header>
+
+      <!-- TAB 1: OVERVIEW & KPIS -->
+      <section id="tab-overview" class="tab-pane active">
+        <!-- KPI Cards Grid -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-icon">💰</div>
+            <div class="kpi-data">
+              <span class="kpi-label">Total Collections</span>
+              <strong class="kpi-val" id="statTotalRev">₹0</strong>
+              <div class="kpi-sub">
+                Online: <span id="statOnlineRev">₹0</span> | Cash: <span id="statCashRev">₹0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon green">👥</div>
+            <div class="kpi-data">
+              <span class="kpi-label">Active Members</span>
+              <strong class="kpi-val" id="statActiveMem">0</strong>
+              <div class="kpi-sub">Total Registered: <span id="statTotalMem">0</span></div>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon yellow">⏳</div>
+            <div class="kpi-data">
+              <span class="kpi-label">Awaiting Payment</span>
+              <strong class="kpi-val" id="statAwaitingPay">0</strong>
+              <div class="kpi-sub">Walk-ins / Cash Pending</div>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon orange">⚠️</div>
+            <div class="kpi-data">
+              <span class="kpi-label">Expiring Soon (7d)</span>
+              <strong class="kpi-val" id="statExpiringSoon">0</strong>
+              <div class="kpi-sub">Eligible for Renewal</div>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon blue">📩</div>
+            <div class="kpi-data">
+              <span class="kpi-label">New Enquiries</span>
+              <strong class="kpi-val" id="statNewEnq">0</strong>
+              <div class="kpi-sub">Requires Follow-up</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Payments Table -->
+        <div class="card recent-section">
+          <div class="card-header">
+            <h3>Recent Transactions</h3>
+            <button class="btn btn-outline btn-sm" onclick="switchTab('payments')">View All Payments →</button>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Receipt #</th>
+                  <th>Member Name</th>
+                  <th>Amount</th>
+                  <th>Method</th>
+                  <th>Status</th>
+                  <th>Date & Time</th>
+                  <th>Recorded By</th>
+                </tr>
+              </thead>
+              <tbody id="recentPaymentsTable">
+                <tr><td colspan="7" class="text-center">Loading recent transactions...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: ENQUIRIES -->
+      <section id="tab-enquiries" class="tab-pane">
+        <div class="card">
+          <div class="card-header filter-header">
+            <h3>Prospect Enquiries & Tour Bookings</h3>
+            <div class="filter-group">
+              <select id="enquiryFilterStatus" class="form-select-sm">
+                <option value="All">All Statuses</option>
+                <option value="New">New Only</option>
+                <option value="Contacted">Contacted</option>
+                <option value="Converted">Converted</option>
+                <option value="Closed">Closed</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Date</th>
+                  <th>Name</th>
+                  <th>Phone / WhatsApp</th>
+                  <th>Interested Plan</th>
+                  <th>Preferred Time</th>
+                  <th>Message</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="enquiriesTableBody">
+                <tr><td colspan="9" class="text-center">Loading enquiries...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: MEMBERS DIRECTORY -->
+      <section id="tab-members" class="tab-pane">
+        <div class="card">
+          <div class="card-header filter-header">
+            <h3>Member Registry & Subscriptions</h3>
+            <div class="filter-group">
+              <input type="text" id="memberSearchInput" class="form-input-sm" placeholder="Search name or phone...">
+              <select id="memberFilterStatus" class="form-select-sm">
+                <option value="All">All Members</option>
+                <option value="Active">Active</option>
+                <option value="Awaiting payment">Awaiting Payment</option>
+                <option value="Expired">Expired</option>
+              </select>
+              <button class="btn btn-primary btn-sm" id="addNewMemberBtn">+ Add Walk-in Member</button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Member Name</th>
+                  <th>Phone</th>
+                  <th>Plan & Duration</th>
+                  <th>Cardio Addon</th>
+                  <th>Start Date</th>
+                  <th>Expiry Date</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="membersTableBody">
+                <tr><td colspan="9" class="text-center">Loading members...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: PAYMENTS & CASH COLLECTIONS -->
+      <section id="tab-payments" class="tab-pane">
+        <div class="card">
+          <div class="card-header filter-header">
+            <h3>All Payment Records (Online & Cash)</h3>
+            <div class="filter-group">
+              <select id="paymentFilterMethod" class="form-select-sm">
+                <option value="All">All Methods</option>
+                <option value="Cash">Cash at Desk</option>
+                <option value="Razorpay">Razorpay Online</option>
+              </select>
+              <button class="btn btn-primary btn-sm" id="openRecordCashModalBtn">💵 Record Cash Payment</button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Receipt #</th>
+                  <th>Member</th>
+                  <th>Plan</th>
+                  <th>Amount</th>
+                  <th>Method</th>
+                  <th>Gateway Ref / Order</th>
+                  <th>Status</th>
+                  <th>Date & Time</th>
+                  <th>Recorded By</th>
+                </tr>
+              </thead>
+              <tbody id="allPaymentsTableBody">
+                <tr><td colspan="9" class="text-center">Loading payments...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: PLANS & PRICING MANAGER -->
+      <section id="tab-plans" class="tab-pane">
+        <div class="card">
+          <div class="card-header filter-header">
+            <h3>Membership Plan Configuration</h3>
+            <button class="btn btn-primary btn-sm" id="addNewPlanBtn">+ Create New Plan</button>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Plan Name</th>
+                  <th>Duration</th>
+                  <th>Base Price (₹)</th>
+                  <th>Cardio Included?</th>
+                  <th>Savings Tag</th>
+                  <th>Features Included</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="plansTableBody">
+                <tr><td colspan="8" class="text-center">Loading plans...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 6: EQUIPMENT & TUTORIALS -->
+      <section id="tab-equipment" class="tab-pane">
+        <div class="card">
+          <div class="card-header filter-header">
+            <h3>Equipment Inventory & Tutorial Links</h3>
+            <button class="btn btn-primary btn-sm" id="addNewEquipmentBtn">+ Add Equipment</button>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Equipment Name</th>
+                  <th>Category</th>
+                  <th>Description</th>
+                  <th>Beginner Note</th>
+                  <th>Tutorial Video</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="equipmentTableBody">
+                <tr><td colspan="7" class="text-center">Loading equipment...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 7: DIET CONSULTATIONS -->
+      <section id="tab-diet" class="tab-pane">
+        <div class="card">
+          <div class="card-header">
+            <h3>Personalized Nutrition Inquiries</h3>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Date</th>
+                  <th>Member Name</th>
+                  <th>Phone</th>
+                  <th>Diet Preference</th>
+                  <th>Primary Goal</th>
+                  <th>Allergies</th>
+                  <th>Budget</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="dietTableBody">
+                <tr><td colspan="10" class="text-center">Loading nutrition requests...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 8: AUDIT TRAIL -->
+      <section id="tab-audit" class="tab-pane">
+        <div class="card">
+          <div class="card-header">
+            <h3>System Audit Trail (Security & Change Log)</h3>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Action</th>
+                  <th>Details</th>
+                  <th>Initiator</th>
+                </tr>
+              </thead>
+              <tbody id="auditTableBody">
+                <tr><td colspan="4" class="text-center">Loading audit log...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ================= MODALS ================= -->
+
+  <!-- 1. Record Cash Payment Modal -->
+  <div class="modal-overlay" id="cashModal">
+    <div class="modal-card">
+      <button class="modal-close" id="closeCashModal">&times;</button>
+      <h3>Record Physical Cash Payment</h3>
+      <p class="modal-sub">Collect cash at front desk and activate member access.</p>
+
+      <form id="cashPaymentForm">
+        <div class="form-group">
+          <label for="cashMemberSelect">Select Member *</label>
+          <select id="cashMemberSelect" class="form-select" required>
+            <option value="">-- Choose Member --</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="cashAmount">Cash Amount Received (₹) *</label>
+          <input type="number" id="cashAmount" class="form-input" required placeholder="e.g. 1000">
+        </div>
+
+        <div class="form-group">
+          <label for="cashStartDate">Membership Start Date</label>
+          <input type="date" id="cashStartDate" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label for="cashNotes">Receipt / Internal Notes</label>
+          <input type="text" id="cashNotes" class="form-input" placeholder="e.g. Received ₹1300 by Front Desk">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Confirm Cash Received & Activate</button>
+        <div id="cashStatus" class="form-status"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. Edit Member Modal -->
+  <div class="modal-overlay" id="editMemberModal">
+    <div class="modal-card">
+      <button class="modal-close" id="closeEditMemberModal">&times;</button>
+      <h3>Update Member Record</h3>
+      <form id="editMemberForm">
+        <input type="hidden" id="editMemberId">
+        <div class="form-group">
+          <label>Member Name</label>
+          <input type="text" id="editMemberName" class="form-input" readonly disabled>
+        </div>
+
+        <div class="form-group">
+          <label for="editMemberStatus">Membership Status *</label>
+          <select id="editMemberStatus" class="form-select">
+            <option value="Active">Active</option>
+            <option value="Awaiting payment">Awaiting payment</option>
+            <option value="Expired">Expired</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="editStartDate">Membership Start Date</label>
+          <input type="date" id="editStartDate" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label for="editEndDate">Membership Expiry Date</label>
+          <input type="date" id="editEndDate" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label for="editNotes">Notes</label>
+          <textarea id="editNotes" class="form-input" rows="2"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Save Member Changes</button>
+        <div id="editMemberStatusMsg" class="form-status"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Add Walk-in Member Modal -->
+  <div class="modal-overlay" id="addMemberModal">
+    <div class="modal-card">
+      <button class="modal-close" id="closeAddMemberModal">&times;</button>
+      <h3>Register Walk-in Member</h3>
+      <form id="addMemberForm">
+        <div class="form-group">
+          <label for="newMemName">Full Name *</label>
+          <input type="text" id="newMemName" class="form-input" required placeholder="Full Name">
+        </div>
+
+        <div class="form-group">
+          <label for="newMemPhone">Mobile Phone *</label>
+          <input type="tel" id="newMemPhone" class="form-input" required placeholder="10-digit number">
+        </div>
+
+        <div class="form-group">
+          <label for="newMemEmail">Email Address</label>
+          <input type="email" id="newMemEmail" class="form-input" placeholder="email@example.com">
+        </div>
+
+        <div class="form-group">
+          <label for="newMemPlan">Membership Plan *</label>
+          <select id="newMemPlan" class="form-select" required>
+            <!-- Populated via JS -->
+          </select>
+        </div>
+
+        <div class="form-group" style="display: flex; gap: 10px; align-items: center;">
+          <input type="checkbox" id="newMemCardio" style="width: 18px; height: 18px;">
+          <label for="newMemCardio" style="margin: 0; cursor: pointer;">Add Cardio Access (+₹300/mo)</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Create Member Record</button>
+        <div id="addMemberStatusMsg" class="form-status"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 4. Add Equipment Modal -->
+  <div class="modal-overlay" id="addEquipmentModal">
+    <div class="modal-card">
+      <button class="modal-close" id="closeAddEquipmentModal">&times;</button>
+      <h3>Add Gym Equipment & Video Tutorial</h3>
+      <form id="addEquipmentForm">
+        <div class="form-group">
+          <label for="eqName">Equipment Name *</label>
+          <input type="text" id="eqName" class="form-input" required placeholder="e.g. Incline Bench Press">
+        </div>
+
+        <div class="form-group">
+          <label for="eqCategory">Category *</label>
+          <select id="eqCategory" class="form-select">
+            <option value="Strength Machines">Strength Machines</option>
+            <option value="Free Weights">Free Weights</option>
+            <option value="Cardio">Cardio</option>
+            <option value="Functional">Functional</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="eqDescription">Description & Target Muscles *</label>
+          <input type="text" id="eqDescription" class="form-input" required placeholder="Targeted upper chest...">
+        </div>
+
+        <div class="form-group">
+          <label for="eqBeginnerNotes">Beginner Instruction Tip *</label>
+          <textarea id="eqBeginnerNotes" class="form-input" rows="2" required placeholder="Adjust bench to 30 degrees..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="eqSetupSteps">Step-by-Step Setup Guide</label>
+          <textarea id="eqSetupSteps" class="form-input" rows="3" placeholder="1. Set seat height&#10;2. Pin weight&#10;3. Grip handles"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="eqCommonMistakes">Common Mistakes to Avoid</label>
+          <input type="text" id="eqCommonMistakes" class="form-input" placeholder="Elbows flared too wide; arching back">
+        </div>
+
+        <div class="form-group">
+          <label for="eqTutorialUrl">YouTube Video Embed Link</label>
+          <input type="url" id="eqTutorialUrl" class="form-input" placeholder="https://www.youtube-nocookie.com/embed/...">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Save Equipment</button>
+        <div id="eqStatusMsg" class="form-status"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>

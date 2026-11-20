@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IronCore Fitness & Strength Club | Beginner-Friendly Gym</title>
+  <meta name="description" content="Affordable, transparent gym membership with friendly trainer guidance, safe machine setup tutorials, and modern equipment. Basic from ₹1,000/mo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <!-- Razorpay Checkout script for online membership payments -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="container bar-content">
+      <span>⚡ <strong>Welcome First-Timers!</strong> Free machine orientation & posture check included with every new membership.</span>
+      <div class="bar-links">
+        <a href="#contact">📍 Central Arcade, 2nd Floor</a>
+        <span class="divider">|</span>
+        <a href="tel:+919876543210">📞 +91 98765 43210</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="#" class="brand-logo">
+        <span class="logo-icon">⚡</span>
+        <div class="logo-text">
+          <span class="brand-title">IRONCORE</span>
+          <span class="brand-sub">FITNESS & STRENGTH</span>
+        </div>
+      </a>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#equipment" class="nav-link">Equipment</a>
+        <a href="#tutorials" class="nav-link">Machine Tutorials</a>
+        <a href="#trainers" class="nav-link">Trainers</a>
+        <a href="#pricing" class="nav-link">Memberships</a>
+        <a href="#nutrition" class="nav-link">Nutrition</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <div class="nav-actions">
+          <a href="/admin" class="btn btn-outline-sm">Admin Portal</a>
+          <a href="#pricing" class="btn btn-primary-sm">Join Now</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-bg-overlay"></div>
+    <div class="container hero-content">
+      <div class="badge-pill">Friendly Guidance • Transparent Pricing • Zero Intimidation</div>
+      <h1 class="hero-title">
+        MORE THAN JUST EQUIPMENT.<br>
+        <span class="text-highlight">GUIDANCE TO BUILD CONFIDENCE.</span>
+      </h1>
+      <p class="hero-subtitle">
+        First time at a gym? You don’t have to guess how machines work. We teach you safe machine setup, proper technique, and offer transparent pricing starting at just <strong>₹1,000/month</strong>.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#pricing" class="btn btn-primary btn-lg">Explore Membership Plans</a>
+        <a href="#tutorials" class="btn btn-secondary btn-lg">Watch Machine Tutorials</a>
+      </div>
+
+      <!-- Quick Highlights Grid -->
+      <div class="hero-highlights-grid">
+        <div class="highlight-item">
+          <div class="highlight-num">₹1,000</div>
+          <div class="highlight-label">Basic Monthly Price</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-num">+₹300</div>
+          <div class="highlight-label">Optional Cardio Add-on</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-num">100%</div>
+          <div class="highlight-label">Beginner Machine Guidance</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-num">2 Options</div>
+          <div class="highlight-label">Pay Online or Cash at Gym</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <div class="section-grid-2">
+        <div class="about-text-col">
+          <div class="section-tag">About IronCore</div>
+          <h2 class="section-title">Built For People Who Want Real Guidance, Not Gym Pressure</h2>
+          <p class="section-lead">
+            Many people give up on fitness in the first two weeks simply because machines look confusing and they feel hesitant to ask for help.
+          </p>
+          <p>
+            At <strong>IronCore Fitness</strong>, our floor trainers actively show you how to adjust seat heights, choose appropriate weights, and execute safe movements. We believe in clear rules: you only pay for what you use, without surprise contracts or fake discounts.
+          </p>
+
+          <div class="about-feature-list">
+            <div class="feature-item">
+              <span class="feature-icon">🛡️</span>
+              <div>
+                <h4>Safety First Machine Onboarding</h4>
+                <p>Every member receives an initial floor walk-through showing pin adjustments and posture rules.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">💡</span>
+              <div>
+                <h4>Honest, Transparent Pricing</h4>
+                <p>Basic strength access starts at ₹1,000/month. Cardio is an optional ₹300/mo add-on. No fine print.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">🥗</span>
+              <div>
+                <h4>Evidence-Based Nutrition Framework</h4>
+                <p>Sensible meal planning and vegetarian protein strategies reviewed by certified specialists.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-image-col">
+          <div class="about-image-card">
+            <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=900&q=80" alt="Gym training environment" class="rounded-img">
+            <div class="floating-badge">
+              <span class="badge-icon">🤝</span>
+              <div>
+                <strong>Floor Coaches Always On Duty</strong>
+                <p>Morning 6:00 AM – 11:00 AM & Evening 4:30 PM – 9:30 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment & Facilities Section -->
+  <section id="equipment" class="section equipment-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Facilities & Inventory</div>
+        <h2 class="section-title">Our Verified Equipment & Setup Guidance</h2>
+        <p class="section-subtitle">
+          We maintain clean, high-grade biomechanical machines and free weights. Click on any machine to see its adjustment guide and video tutorial.
+        </p>
+
+        <!-- Category Filter Tabs -->
+        <div class="filter-tabs" id="equipmentFilters">
+          <button class="filter-btn active" data-category="All">All Equipment</button>
+          <button class="filter-btn" data-category="Strength Machines">Strength Machines</button>
+          <button class="filter-btn" data-category="Free Weights">Free Weights & Racks</button>
+          <button class="filter-btn" data-category="Cardio">Cardio Zone (+Addon)</button>
+          <button class="filter-btn" data-category="Functional">Functional & Cables</button>
+        </div>
+      </div>
+
+      <!-- Equipment Dynamic Grid -->
+      <div class="equipment-grid" id="equipmentGrid">
+        <div class="loading-spinner">Loading equipment inventory...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Machine Tutorial Library Section -->
+  <section id="tutorials" class="section tutorials-section">
+    <div class="container">
+      <div class="tutorial-banner">
+        <div class="banner-content">
+          <div class="section-tag light">Safe Technique Video Library</div>
+          <h2>Never Feel Lost on the Gym Floor Again</h2>
+          <p>
+            Learn how each machine works before you touch it. Watch our coach-reviewed setup demos explaining pin adjustments, safe grip, and mistakes to avoid.
+          </p>
+          <div class="tutorial-stats">
+            <span>🎥 8+ HD Machine Walkthroughs</span>
+            <span>📐 Biomechanical Safety Notes</span>
+            <span>👨‍🏫 Trainer Assistance Available</span>
+          </div>
+        </div>
+        <div class="banner-cta">
+          <a href="#equipment" class="btn btn-primary btn-lg">Browse All Tutorials</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trainers & Guidance Section -->
+  <section id="trainers" class="section trainers-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Expert Guidance</div>
+        <h2 class="section-title">Meet Your Coaches & Floor Guides</h2>
+        <p class="section-subtitle">
+          Real trainers with verified credentials who are dedicated to helping beginners feel comfortable and build strength safely.
+        </p>
+      </div>
+
+      <div class="trainers-grid" id="trainersGrid">
+        <div class="loading-spinner">Loading coaches...</div>
+      </div>
+
+      <!-- How to ask for help box -->
+      <div class="help-guide-box">
+        <div class="help-icon">💬</div>
+        <div class="help-text">
+          <h3>Hesitant to ask for assistance? Here’s our beginner promise:</h3>
+          <p>
+            You do <strong>not</strong> need to hire an expensive personal trainer just to know how to adjust a seat or check your squat form. Our floor trainers are salaried and specifically designated to assist every member. Just say: <em>"Hey Coach, could you check my setup on this machine?"</em> and we’ll guide you happily!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Membership Plans & Pricing Section -->
+  <section id="pricing" class="section pricing-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Transparent Memberships</div>
+        <h2 class="section-title">Clear Pricing. No Hidden Contracts.</h2>
+        <p class="section-subtitle">
+          Basic strength access from ₹1,000/month. Add cardio only if you want it (+₹300/mo). Choose monthly or save genuinely on multi-month memberships.
+        </p>
+
+        <!-- Pricing Duration Switcher -->
+        <div class="duration-switcher" id="durationSwitcher">
+          <button class="duration-btn active" data-duration="1">1 Month (Monthly)</button>
+          <button class="duration-btn" data-duration="3">3 Months (Quarterly)</button>
+          <button class="duration-btn" data-duration="6">6 Months (Half-Yearly)</button>
+          <button class="duration-btn" data-duration="12">12 Months (Yearly)</button>
+        </div>
+      </div>
+
+      <!-- Plans Cards Container -->
+      <div class="pricing-cards-grid" id="pricingCardsGrid">
+        <div class="loading-spinner">Loading membership plans...</div>
+      </div>
+
+      <!-- Business Rule Alert -->
+      <div class="pricing-notice-card">
+        <span class="notice-icon">ℹ️</span>
+        <div class="notice-text">
+          <strong>Important Business Rule:</strong>
+          Basic Membership provides full access to strength machines, free weights, dumbbells, lockers, and floor trainer guidance. It does <strong>not</strong> include motorized cardio equipment. Cardio access is an optional add-on costing an additional ₹300 per month.
+        </div>
+      </div>
+
+      <!-- Plan Comparison Table -->
+      <div class="comparison-table-wrapper">
+        <h3 class="comparison-title">Detailed Plan Feature Comparison</h3>
+        <div class="table-responsive">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Feature / Facility</th>
+                <th>Basic Membership</th>
+                <th class="col-highlight">Basic + Cardio Plan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Strength-training machines</td>
+                <td><span class="check-yes">✔ Included</span></td>
+                <td class="col-highlight"><span class="check-yes">✔ Included</span></td>
+              </tr>
+              <tr>
+                <td>Dumbbells and free weights zone</td>
+                <td><span class="check-yes">✔ Included</span></td>
+                <td class="col-highlight"><span class="check-yes">✔ Included</span></td>
+              </tr>
+              <tr>
+                <td>Cardio equipment (Treadmills, Air bikes)</td>
+                <td><span class="check-no">✖ Not included (Addon: +₹300/mo)</span></td>
+                <td class="col-highlight"><span class="check-yes">✔ Included Full Access</span></td>
+              </tr>
+              <tr>
+                <td>Basic floor trainer guidance & setup</td>
+                <td><span class="check-yes">✔ Included</span></td>
+                <td class="col-highlight"><span class="check-yes">✔ Included</span></td>
+              </tr>
+              <tr>
+                <td>Machine tutorial video library access</td>
+                <td><span class="check-yes">✔ Included</span></td>
+                <td class="col-highlight"><span class="check-yes">✔ Included</span></td>
+              </tr>
+              <tr>
+                <td>Lockers & changing facilities</td>
+                <td><span class="check-yes">✔ Included</span></td>
+                <td class="col-highlight"><span class="check-yes">✔ Included</span></td>
+              </tr>
+              <tr>
+                <td>Monthly Starting Price</td>
+                <td><strong>₹1,000 / month</strong></td>
+                <td class="col-highlight"><strong>₹1,300 / month</strong></td>
+              </tr>
+              <tr>
+                <td>Payment Options</td>
+                <td>Razorpay Online OR Cash at Gym</td>
+                <td class="col-highlight">Razorpay Online OR Cash at Gym</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diet & Nutrition Section -->
+  <section id="nutrition" class="section nutrition-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-tag">Nutrition & Fuel</div>
+        <h2 class="section-title">Evidence-Based Fueling For Real Progress</h2>
+        <p class="section-subtitle">
+          Grounded nutrition advice tailored to Indian lifestyles. No extreme crash diets, no dangerous fat burners.
+        </p>
+      </div>
+
+      <!-- Nutrition Cards Grid -->
+      <div class="nutrition-grid" id="nutritionGrid">
+        <div class="loading-spinner">Loading nutrition resources...</div>
+      </div>
+
+      <!-- Professional Boundary Disclaimer & Consultation CTA -->
+      <div class="diet-consult-box">
+        <div class="consult-content">
+          <div class="consult-badge">Personalized Nutrition Consultation</div>
+          <h3>Need a Tailored Dietary Roadmap?</h3>
+          <p>
+            Whether your goal is lean muscle gain, fat loss, or optimizing vegetarian protein intake, our certified nutrition advisor reviews your preferences, allergies, and daily budget to build a sustainable meal strategy.
+          </p>
+          <div class="safety-disclaimer">
+            <strong>⚠️ Professional Boundary Notice:</strong>
+            Individual dietary roadmaps are reviewed by a qualified nutrition professional. General guidance is educational and does not constitute medical treatment.
+          </div>
+        </div>
+        <div class="consult-action">
+          <button class="btn btn-primary btn-lg" id="openDietModalBtn">Request Diet Consultation</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Enquiry Section -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info-col">
+          <div class="section-tag">Visit or Call Us</div>
+          <h2 class="section-title">Ready To Tour The Gym In Person?</h2>
+          <p>
+            Drop by during floor hours to inspect our equipment, meet our coaches, and see the environment before you commit.
+          </p>
+
+          <div class="info-blocks">
+            <div class="info-block">
+              <span class="info-icon">📍</span>
+              <div>
+                <strong>Gym Location:</strong>
+                <p>2nd Floor, Central Arcade Building, MG Road, Sector 14, Gurugram, Haryana 122001</p>
+              </div>
+            </div>
+
+            <div class="info-block">
+              <span class="info-icon">⏰</span>
+              <div>
+                <strong>Operating Hours:</strong>
+                <p>Monday – Saturday: 6:00 AM – 10:00 PM<br>Sunday: 7:00 AM – 1:00 PM</p>
+              </div>
+            </div>
+
+            <div class="info-block">
+              <span class="info-icon">📞</span>
+              <div>
+                <strong>Contact / WhatsApp:</strong>
+                <p>
+                  <a href="tel:+919876543210">+91 98765 43210</a><br>
+                  <a href="https://wa.me/919876543210?text=Hi%2C%20I%20am%20interested%20in%20visiting%20IronCore%20Gym" target="_blank" class="whatsapp-link">💬 Chat on WhatsApp</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Enquiry Form -->
+        <div class="contact-form-col">
+          <div class="form-card">
+            <h3>Book a Free Gym Tour / Send Enquiry</h3>
+            <p class="form-desc">Leave your details and our team will get back to you within 2 hours.</p>
+
+            <form id="enquiryForm" class="site-form">
+              <div class="form-group">
+                <label for="enqName">Full Name *</label>
+                <input type="text" id="enqName" class="form-input" placeholder="e.g. Rahul Sharma" required>
+              </div>
+
+              <div class="form-group">
+                <label for="enqPhone">WhatsApp / Mobile Number *</label>
+                <input type="tel" id="enqPhone" class="form-input" placeholder="e.g. 9876543210" required>
+              </div>
+
+              <div class="form-group">
+                <label for="enqEmail">Email Address (Optional)</label>
+                <input type="email" id="enqEmail" class="form-input" placeholder="rahul@example.com">
+              </div>
+
+              <div class="form-group">
+                <label for="enqPlan">Interested Membership Plan</label>
+                <select id="enqPlan" class="form-select">
+                  <option value="Basic Monthly (₹1,000/mo)">Basic Monthly (₹1,000/mo)</option>
+                  <option value="Basic + Cardio Monthly (₹1,300/mo)">Basic + Cardio Monthly (₹1,300/mo)</option>
+                  <option value="Quarterly Plan (3 Months)">Quarterly Plan (3 Months)</option>
+                  <option value="Annual Membership (12 Months)">Annual Membership (12 Months)</option>
+                  <option value="Just exploring / Need Gym Tour">Just exploring / Need Gym Tour</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="enqTime">Preferred Time for Visit / Call</label>
+                <select id="enqTime" class="form-select">
+                  <option value="Morning (7:00 AM - 11:00 AM)">Morning (7:00 AM - 11:00 AM)</option>
+                  <option value="Evening (5:00 PM - 9:00 PM)">Evening (5:00 PM - 9:00 PM)</option>
+                  <option value="Anytime">Anytime</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="enqMessage">Questions or Fitness Goals</label>
+                <textarea id="enqMessage" class="form-textarea" rows="3" placeholder="Tell us if you are a beginner or have specific questions..."></textarea>
+              </div>
+
+              <div class="form-checkbox-group">
+                <input type="checkbox" id="enqConsent" required checked>
+                <label for="enqConsent">I consent to receiving contact from IronCore Fitness regarding membership information.</label>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" id="enqSubmitBtn">Submit Enquiry</button>
+              <div id="enqStatusMessage" class="form-status"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-col">
+        <div class="brand-logo footer-logo">
+          <span class="logo-icon">⚡</span>
+          <div class="logo-text">
+            <span class="brand-title">IRONCORE</span>
+            <span class="brand-sub">FITNESS & STRENGTH</span>
+          </div>
+        </div>
+        <p class="footer-desc">
+          Safe machine instruction, transparent memberships, and dedicated trainer guidance for everyone from day one.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="#about">About Gym</a></li>
+          <li><a href="#equipment">Equipment & Facilities</a></li>
+          <li><a href="#tutorials">Machine Video Tutorials</a></li>
+          <li><a href="#trainers">Coaches & Guidance</a></li>
+          <li><a href="#pricing">Membership Plans</a></li>
+          <li><a href="#nutrition">Nutrition Guidance</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Business Model & Portal</h4>
+        <ul class="footer-links">
+          <li><a href="/admin">Staff Admin Portal</a></li>
+          <li><a href="#pricing">Pay Online via Razorpay</a></li>
+          <li><a href="#pricing">Pay Cash at Front Desk</a></li>
+        </ul>
+        <div class="dev-service-badge">
+          <span>Website Service Fee: ₹500 (30-day pilot) / ₹1,000/mo ongoing</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container bottom-row">
+        <p>&copy; 2026 IronCore Fitness Club. All rights reserved.</p>
+        <div class="legal-links">
+          <span>Transparent Pricing Guaranteed</span>
+          <span>•</span>
+          <span>No Auto-Renew Hidden Charges</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MODALS ================= -->
+
+  <!-- 1. Equipment Tutorial Modal -->
+  <div class="modal-overlay" id="tutorialModal">
+    <div class="modal-container modal-lg">
+      <button class="modal-close-btn" id="closeTutorialModal">&times;</button>
+      <div class="modal-body" id="tutorialModalContent">
+        <!-- Injected dynamically by main.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Interactive Plan Join & Checkout Modal -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal-container">
+      <button class="modal-close-btn" id="closeCheckoutModal">&times;</button>
+      <div class="modal-header">
+        <h3 id="checkoutModalTitle">Join IronCore Fitness</h3>
+        <p id="checkoutModalSub">Complete your registration and select your preferred payment mode.</p>
+      </div>
+      <div class="modal-body">
+        <form id="checkoutForm">
+          <!-- Plan Summary Card -->
+          <div class="checkout-summary-box" id="checkoutSummaryBox">
+            <div class="summary-plan-name" id="sumPlanName">Basic Monthly</div>
+            <div class="summary-row">
+              <span>Duration:</span>
+              <strong id="sumPlanDuration">1 Month</strong>
+            </div>
+            <div class="summary-row">
+              <span>Base Strength Access:</span>
+              <span id="sumBasePrice">₹1,000</span>
+            </div>
+
+            <!-- Cardio Addon Toggle -->
+            <div class="cardio-addon-toggle-box" id="cardioAddonRow">
+              <label class="switch-container">
+                <input type="checkbox" id="checkoutCardioAddon">
+                <span class="slider"></span>
+              </label>
+              <div class="cardio-label-text">
+                <strong>Add Cardio Equipment Access</strong>
+                <span id="cardioAddonFeeText">+₹300 / month</span>
+              </div>
+            </div>
+
+            <div class="summary-total-row">
+              <span>Total Payable Amount:</span>
+              <span class="total-price" id="sumTotalPrice">₹1,000</span>
+            </div>
+          </div>
+
+          <!-- Member Contact Fields -->
+          <div class="form-group">
+            <label for="regName">Full Name *</label>
+            <input type="text" id="regName" class="form-input" required placeholder="Your full name">
+          </div>
+
+          <div class="form-group">
+            <label for="regPhone">Mobile Number (for membership & receipt) *</label>
+            <input type="tel" id="regPhone" class="form-input" required placeholder="10-digit mobile number">
+          </div>
+
+          <div class="form-group">
+            <label for="regEmail">Email Address (Optional)</label>
+            <input type="email" id="regEmail" class="form-input" placeholder="your.email@example.com">
+          </div>
+
+          <!-- Payment Mode Selection -->
+          <div class="form-group">
+            <label>Select Payment Method *</label>
+            <div class="payment-modes-grid">
+              <label class="pay-mode-card selected" id="modeRazorpayCard">
+                <input type="radio" name="paymentMethod" value="razorpay" checked>
+                <div class="pay-mode-info">
+                  <strong>💳 Pay Online (Razorpay)</strong>
+                  <span>Instant UPI, Cards, Netbanking</span>
+                </div>
+              </label>
+
+              <label class="pay-mode-card" id="modeCashCard">
+                <input type="radio" name="paymentMethod" value="cash">
+                <div class="pay-mode-info">
+                  <strong>💵 Pay Cash at Gym</strong>
+                  <span>Pay at front desk on day 1</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" id="proceedPaymentBtn">
+            Proceed with Online Payment
+          </button>
+          <div id="checkoutStatus" class="form-status"></div>
+        </form>
+
+        <!-- Digital Receipt Container (shown after payment / cash voucher) -->
+        <div id="receiptContainer" class="receipt-card" style="display: none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Diet Consultation Request Modal -->
+  <div class="modal-overlay" id="dietModal">
+    <div class="modal-container">
+      <button class="modal-close-btn" id="closeDietModal">&times;</button>
+      <div class="modal-header">
+        <h3>Request Diet Consultation</h3>
+        <p>Reviewed by certified sports nutrition advisor Vikram Singh.</p>
+      </div>
+      <div class="modal-body">
+        <form id="dietForm">
+          <div class="form-group">
+            <label for="dietName">Full Name *</label>
+            <input type="text" id="dietName" class="form-input" required placeholder="e.g. Kunal Deshmukh">
+          </div>
+
+          <div class="form-group">
+            <label for="dietPhone">Phone Number *</label>
+            <input type="tel" id="dietPhone" class="form-input" required placeholder="10-digit number">
+          </div>
+
+          <div class="form-group">
+            <label for="dietPreference">Dietary Lifestyle *</label>
+            <select id="dietPreference" class="form-select">
+              <option value="Vegetarian">Pure Vegetarian</option>
+              <option value="Eggetarian">Eggetarian</option>
+              <option value="Non-Vegetarian">Non-Vegetarian</option>
+              <option value="Vegan">Vegan</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="dietGoal">Primary Fitness Goal *</label>
+            <select id="dietGoal" class="form-select">
+              <option value="Muscle Gain">Muscle Gain & Hypertrophy</option>
+              <option value="Fat Loss">Fat Loss & Conditioning</option>
+              <option value="General Health">General Energy & Stamina</option>
+              <option value="Endurance">Sports Endurance</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="dietAllergies">Food Allergies / Dislikes (if any)</label>
+            <input type="text" id="dietAllergies" class="form-input" placeholder="e.g. Lactose intolerant, peanut allergy">
+          </div>
+
+          <div class="form-group">
+            <label for="dietBudget">Estimated Monthly Food Budget</label>
+            <input type="text" id="dietBudget" class="form-input" placeholder="e.g. ₹3,000 - ₹5,000 / month">
+          </div>
+
+          <div class="form-group">
+            <label for="dietNotes">Current Routine / Notes</label>
+            <textarea id="dietNotes" class="form-textarea" rows="2" placeholder="Tell us about your eating schedule..."></textarea>
+          </div>
+
+          <div class="safety-disclaimer" style="margin-bottom: 16px;">
+            <small>⚠️ Diet consultation roadmaps are reviewed personally by our certified coach. We do not prescribe starvation diets, unregulated pills, or extreme restrictions.</small>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" id="dietSubmitBtn">Submit Request</button>
+          <div id="dietStatus" class="form-status"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/payment.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
